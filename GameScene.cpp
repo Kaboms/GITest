@@ -38,8 +38,10 @@ void GameScene::Init(const QSize& size, const QString& scenario_path)
 }
 //----------------------------------------------------------------------
 
-void GameScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void GameScene::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
+    QGraphicsScene::mousePressEvent(event);
+
     _scenarioManager->ExecuteNext();
 }
 //----------------------------------------------------------------------

@@ -26,7 +26,7 @@ private:
     void CreateCommand(const QString& command);
 
 private:
-    CommandsQueue Commands;
+    CommandsQueue _commands;
     GameScene* _scene;
 };
 //----------------------------------------------------------------------

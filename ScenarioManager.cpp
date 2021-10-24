@@ -46,10 +46,10 @@ void ScenarioManager::CreateCommand(const QString& command)
         newCommand = std::make_shared<EndCommand>(_scene);
 
     if (newCommand != nullptr)
+    {
         newCommand->Init(command);
-
-    if (newCommand != nullptr)
-        Commands.push(newCommand);
+        _commands.push(newCommand);
+    }
 }
 //----------------------------------------------------------------------
 
@@ -81,7 +81,7 @@ void ScenarioManager::Parse(const QString& scenarioPath)
             CreateCommand(command);
 
         // Выполняем первую комманду
-        if (Commands.size())
+        if (_commands.size())
             ExecuteNext();
     }
 
@@ -91,12 +91,12 @@ void ScenarioManager::Parse(const QString& scenarioPath)
 
 void ScenarioManager::ExecuteNext()
 {
-    if (Commands.size())
+    if (_commands.size())
     {
-        std::shared_ptr<AbstractScenarioCommand> command = Commands.front();
+        std::shared_ptr<AbstractScenarioCommand> command = _commands.front();
         command->Execute();
 
-        Commands.pop();
+        _commands.pop();
 
         if (command->GetInput() == false)
             ExecuteNext();

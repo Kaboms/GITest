@@ -34,7 +34,7 @@ public:
     void ShowText(const QString& speaker, const QString& text);
 
 protected:
-    virtual void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    virtual void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
 
 private:
     QGraphicsPixmapItem* ShowItem(ItemsMap& items, const QString& id, const QString& resurse_path, const QPoint& position, const int& order);
